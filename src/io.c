@@ -1,4 +1,3 @@
-#include <string.h>
 #include <inttypes.h>
 #include "../include/io.h"
 #include "../include/packet.h"
