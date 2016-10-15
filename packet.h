@@ -3,18 +3,27 @@
 
 #include <stdint.h>
 #include <malloc.h>
-#include "weather_data.h"
+
+typedef struct {
+    uint16_t temperature;
+    uint8_t wetness;
+    uint16_t windspeed;
+} weather_data_t;
 
 typedef struct {
     uint16_t address;
     uint16_t packet_number;
     uint8_t instruction;
     weather_data_t data;
+} payload_t;
+
+typedef struct {
+    payload_t payload;
     uint16_t check_sum;
 } packet_t;
 
 
-uint16_t get_crc16(packet_t* packet);
+uint16_t get_crc16(const payload_t* payload);
 /*
 * https://ru.wikibooks.org/wiki/Реализации_алгоритмов/Циклический_избыточный_код
 * Name  : CRC-16 CCITT
@@ -26,7 +35,7 @@ uint16_t get_crc16(packet_t* packet);
 * MaxLen: 4095 байт (32767 бит) - обнаружение одинарных, двойных, тройных и всех нечетных ошибок
 */
 
-uint8_t check_crc16(packet_t* packet);
+uint8_t check_crc16(const packet_t* packet);
 
 void make_packet(packet_t *packet,
                            uint16_t address,
