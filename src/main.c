@@ -1,8 +1,8 @@
 #include <stdint.h>
 #include <inttypes.h>
 #include "stdio.h"
-#include "packet.h"
-#include "io.h"
+#include "../include/packet.h"
+#include "../include/io.h"
 
 #define ADDRESS 4
 #define INSTRUCTION 0x01
@@ -22,7 +22,7 @@ int main(void) {
 
     packet_t packet;
     make_packet(&packet, ADDRESS, packet_count, INSTRUCTION, data);
-    
+
     send_data((char*)&packet);
     packet_count++;
 

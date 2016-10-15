@@ -1,5 +1,5 @@
 #include <inttypes.h>
-#include "packet.h"
+#include "../include/packet.h"
 
 uint16_t get_crc16(const payload_t* payload) {
     size_t payload_size = sizeof(payload);

@@ -1,7 +1,7 @@
 #include <string.h>
 #include <inttypes.h>
-#include "io.h"
-#include "packet.h"
+#include "../include/io.h"
+#include "../include/packet.h"
 
 void send_data(const char* data) {
     read_data(data);
